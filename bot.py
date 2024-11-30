@@ -5,7 +5,6 @@ from faster_whisper import WhisperModel
 import yt_dlp
 from audio_separator.separator import Separator
 from discord import ApplicationContext
-import google.generativeai as genai
 load_dotenv()
 
 
@@ -19,8 +18,6 @@ separator = Separator(output_single_stem='Vocals',
 separator.load_model('Kim_Vocal_2.onnx')
 bot = discord.Bot()
 model = WhisperModel("base", device="auto", compute_type="int8")
-genai.configure(api_key=env.get('GENAI_KEY', ''))
-model = genai.GenerativeModel("gemini-1.5-flash")
 
 os.chdir('caches')
 
